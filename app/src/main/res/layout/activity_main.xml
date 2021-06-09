@@ -18,49 +18,49 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:gravity="center"
-            android:text="Adicionar novo funcionário"
+            android:text="Adicionar carro"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <EditText
-            android:id="@+id/txtNomeNovoFuncionario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Entre com o nome do empregado" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingLeft="6dp"
-            android:text="Selecione o departamento" />
+            android:text="Marca do carro" />
 
         <Spinner
-            android:id="@+id/spnDepartamentos"
+            android:id="@+id/spnMarcas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/departamentos" />
+        <EditText
+            android:id="@+id/txtmodelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Modelo" />
 
         <EditText
-            android:id="@+id/txtNovoSalarioFuncionario"
+            android:id="@+id/txtkm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="0123456789"
-            android:hint="Entre com o salário do funcionário"
+            android:hint="Km"
             android:inputType="number" />
 
         <Button
-            android:id="@+id/btnAdicionarfuncionario"
+            android:id="@+id/btnIncluircarro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adicionar funcionário" />
+            android:text="Incluir carro" />
 
         <TextView
-            android:id="@+id/lblVisualizaFuncionario"
+            android:id="@+id/lblVisualizaCarro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="16dp"
-            android:text="Visualizar Funcionários"
+            android:text="Visualizar Carros"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textStyle="bold" />
 

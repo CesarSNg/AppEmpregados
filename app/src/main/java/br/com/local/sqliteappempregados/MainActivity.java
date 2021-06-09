@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String NOME_BANCO_DE_DADOS = "bdEmpregados";
 
-    TextView lblEmpregados;
-    EditText txtNomeEmpregado, txtSalarioEmpregado;
+    TextView lblCarro;
+    EditText txtModelo, txtKm;
     Spinner spnDepartamentos;
 
     Button btnAdcionaFuncionario;
@@ -34,16 +34,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lblEmpregados = findViewById(R.id.lblVisualizaFuncionario);
-        txtNomeEmpregado = findViewById(R.id.txtNomeNovoFuncionario);
-        txtSalarioEmpregado = findViewById(R.id.txtNovoSalarioFuncionario);
+        lblCarro = findViewById(R.id.lblVisualizaCarro);
+        txtModelo = findViewById(R.id.txtmodelo);
+        txtKm = findViewById(R.id.txtkm);
         spnDepartamentos = findViewById(R.id.spnDepartamentos);
 
-        btnAdcionaFuncionario = findViewById(R.id.btnAdicionarfuncionario);
+        btnIncluir = findViewById(R.id.btnIncluircarro);
 
         btnAdcionaFuncionario.setOnClickListener(this);
 
-        lblEmpregados.setOnClickListener(this);
+        lblCarro.setOnClickListener(this);
 
         //Criando banco de dados
 
