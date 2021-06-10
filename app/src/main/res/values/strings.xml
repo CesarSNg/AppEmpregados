@@ -1,12 +1,15 @@
 <resources>
-    <string name="app_name">SQLiteAppEmpregados</string>
+    <string name="app_name">SQLiteAppAutomoveis</string>
 
-    <array name="departamentos">
-        <item>Técnico</item>
-        <item>Suporte</item>
-        <item>Pesquisa e Desenvolvimento</item>
-        <item>Marketing</item>
-        <item>Recursos Humanos</item>
-        <item>Financeiro</item>
+    <array name="marcas">
+        <item>Audi</item>
+        <item>BMW</item>
+        <item>Chevrolet</item>
+        <item>Fiat</item>
+        <item>Ford</item>
+        <item>Honda</item>
+        <item>Hyundai</item>
+        <item>Toyota</item>
+        <item>Volkswagen</item>
     </array>
 </resources>

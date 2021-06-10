@@ -19,15 +19,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String NOME_BANCO_DE_DADOS = "bdEmpregados";
+    public static final String NOME_BANCO_DE_DADOS = "bdAutomoveis";
 
     TextView lblCarro;
     EditText txtModelo, txtKm;
-    Spinner spnDepartamentos;
-
-    Button btnAdcionaFuncionario;
-
+    Spinner spnMarcas;
+    Button btnIncluirCarro;
     SQLiteDatabase meuBancoDeDados;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,107 +36,86 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lblCarro = findViewById(R.id.lblVisualizaCarro);
         txtModelo = findViewById(R.id.txtmodelo);
         txtKm = findViewById(R.id.txtkm);
-        spnDepartamentos = findViewById(R.id.spnDepartamentos);
+        spnMarcas = findViewById(R.id.spnMarcas);
 
-        btnIncluir = findViewById(R.id.btnIncluircarro);
+        btnIncluirCarro = findViewById(R.id.btnIncluirCarro);
 
-        btnAdcionaFuncionario.setOnClickListener(this);
+        btnIncluirCarro.setOnClickListener(this);
 
         lblCarro.setOnClickListener(this);
 
-        //Criando banco de dados
-
         meuBancoDeDados = openOrCreateDatabase(NOME_BANCO_DE_DADOS, MODE_PRIVATE, null);
 
-        criarTabelaEmpregado();
+        criarTabelaAutomovel();
     }
 
-//Este método irá validar o nome e o salário
-    //departamento não precisa de validação, pois é um spinner e não pode estar vazio
-
-    private boolean verificarEntrada(String nome, String salario) {
-        if (nome.isEmpty()) {
-            txtNomeEmpregado.setError("Por favor entre com o nome");
-            txtNomeEmpregado.requestFocus();
+    private boolean verificarEntrada(String modelo, String km) {
+        if (modelo.isEmpty()) {
+            txtModelo.setError("Modelo do carro");
+            txtModelo.requestFocus();
             return false;
         }
 
-        if (salario.isEmpty() || Integer.parseInt(salario) <= 0) {
-            txtSalarioEmpregado.setError("Por favor entre com o salário");
-            txtSalarioEmpregado.requestFocus();
+        if (km.isEmpty() || Integer.parseInt(km) <= 0) {
+            txtKm.setError("Km do carro");
+            txtKm.requestFocus();
             return false;
         }
         return true;
     }
 
-    //Neste método vamos fazer a operação para adicionar os funcionario
-    private void adicionarEmpregado() {
+    private void adicionarCarro() {
 
         Locale meuLocal = new Locale("pt", "BR");
         NumberFormat nf = NumberFormat.getCurrencyInstance(meuLocal);
 
 
-        String nomeEmpr = txtNomeEmpregado.getText().toString().trim();
-        String salarioEmpr = txtSalarioEmpregado.getText().toString().trim();
-        String deptoEmpr = spnDepartamentos.getSelectedItem().toString();
-
-        // obtendo o horário atual para data de inclusão
+        String modeloCar = txtModelo.getText().toString().trim();
+        String kmCar = txtKm.getText().toString().trim();
+        String marcaCar = spnMarcas.getSelectedItem().toString();
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String dataEntrada = simpleDateFormat.format(calendar.getTime());
 
+        if (verificarEntrada(modeloCar, kmCar)) {
 
-        //validando entrada
-        if (verificarEntrada(nomeEmpr, salarioEmpr)) {
-
-            String insertSQL = "INSERT INTO funcionarios (" +
-                    "nome, " +
-                    "departamento, " +
+            String insertSQL = "INSERT INTO carros (" +
+                    "modelo, " +
+                    "marca, " +
                     "dataEntrada," +
-                    "salario)" +
+                    "km)" +
                     "VALUES(?, ?, ?, ?);";
 
-            // usando o mesmo método execsql para inserir valores
-            // desta vez tem dois parâmetros
-            // primeiro é a string sql e segundo são os parâmetros que devem ser vinculados à consulta
 
-            meuBancoDeDados.execSQL(insertSQL, new String[]{nomeEmpr, deptoEmpr, dataEntrada, salarioEmpr});
+            meuBancoDeDados.execSQL(insertSQL, new String[]{modeloCar, marcaCar, dataEntrada, kmCar});
 
-            Toast.makeText(getApplicationContext(), "Funcionário adicionado com sucesso!!!", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(getApplicationContext(), "Carro adicionado com sucesso!!!", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnAdicionarfuncionario:
-
-                adicionarEmpregado();
+            case R.id.btnIncluirCarro:
+                adicionarCarro();
                 break;
-            case R.id.lblVisualizaFuncionario:
+
+            case R.id.lblVisualizaCarro:
                 startActivity(new Intent(getApplicationContext(), Funcionarios_Activity.class));
                 break;
         }
 
     }
-    // este método irá criar a tabela
-    // como vamos chamar esse método toda vez que lançarmos o aplicativo
-    // Eu adicionei IF NOT EXISTS ao SQL
-    // então, só criará a tabela quando a tabela ainda não estiver criada
 
-    private void criarTabelaEmpregado() {
+    private void criarTabelaAutomovel() {
         meuBancoDeDados.execSQL(
-                "CREATE TABLE IF NOT EXISTS funcionarios (" +
+                "CREATE TABLE IF NOT EXISTS carros (" +
                         "id integer PRIMARY KEY AUTOINCREMENT," +
-                        "nome varchar(200) NOT NULL," +
-                        "departamento varchar(200) NOT NULL," +
+                        "modelo varchar(200) NOT NULL," +
+                        "marca varchar(200) NOT NULL," +
                         "dataEntrada datetime NOT NULL," +
-                        "salario double NOT NULL );"
+                        "km double NOT NULL );"
         );
     }
-
-
 }

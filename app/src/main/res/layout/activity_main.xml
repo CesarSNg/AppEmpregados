@@ -18,6 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:gravity="center"
+            android:fontFamily="sans-serif-black"
+            android:textSize="50dp"
             android:text="Adicionar carro"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -33,7 +35,7 @@
             android:id="@+id/spnMarcas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/departamentos" />
+            android:entries="@array/marcas" />
         <EditText
             android:id="@+id/txtmodelo"
             android:layout_width="match_parent"
@@ -49,7 +51,7 @@
             android:inputType="number" />
 
         <Button
-            android:id="@+id/btnIncluircarro"
+            android:id="@+id/btnIncluirCarro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Incluir carro" />
