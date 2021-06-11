@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:gravity="center"
+            android:textColor="#0D235A"
             android:fontFamily="sans-serif-black"
             android:textSize="50dp"
             android:text="Adicionar carro"
@@ -62,10 +63,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="16dp"
+            android:textColor="#030833"
+            android:shadowColor="@color/black"
             android:text="Visualizar Carros"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textStyle="bold" />
 
     </LinearLayout>
-
 </RelativeLayout>

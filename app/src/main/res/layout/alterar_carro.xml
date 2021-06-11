@@ -10,38 +10,41 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:text="Editar Funcionário"
+        android:textColor="#0D235A"
+        android:textSize="50dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Alterar carro"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-    <EditText
-        android:id="@+id/txtEditarFuncionario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Entre com o nome do funcionário" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingLeft="6dp"
-        android:text="Selecione o departamento" />
+        android:text="Escolha o modelo" />
 
     <Spinner
-        android:id="@+id/spnDepartamentos"
+        android:id="@+id/spnMarcas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/departamentos" />
+        android:entries="@array/marcas" />
 
     <EditText
-        android:id="@+id/txtEditarSalario"
+        android:id="@+id/txtEditarCarro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Modelo do carro" />
+
+    <EditText
+        android:id="@+id/txtEditarKm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:digits="0123456789"
-        android:hint="Entrar com o salário do funciário"
+        android:hint="Km do carro"
         android:inputType="number" />
 
     <Button
-        android:id="@+id/btnAlterarFuncionario"
+        android:id="@+id/btnAlterarCarro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Alterar" />

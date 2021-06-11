@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.lblVisualizaCarro:
-                startActivity(new Intent(getApplicationContext(), Funcionarios_Activity.class));
+                startActivity(new Intent(getApplicationContext(), Carros_Activity.class));
                 break;
         }
 
