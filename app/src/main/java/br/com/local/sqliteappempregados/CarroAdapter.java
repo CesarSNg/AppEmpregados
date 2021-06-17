@@ -75,7 +75,7 @@ public class CarroAdapter extends ArrayAdapter<Carros> {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String sql = "DELETE FROM funcionarios WHERE id = ?";
                         meuBancoDeDados.execSQL(sql, new Integer[]{carros.getId()});
-                        recarregarCarrosDB(); // recarregarEmpregadosDB
+                        recarregarCarrosDB();
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -131,13 +131,13 @@ public class CarroAdapter extends ArrayAdapter<Carros> {
                 meuBancoDeDados.execSQL(sql,
                         new String[]{modelo, marca, km, String.valueOf(carros.getId())});
                 Toast.makeText(mCtx, "Carro alterado com sucesso!!!", Toast.LENGTH_LONG).show();
-                recarregarCarrosDB(); // recarregarEmpregadosDB
+                recarregarCarrosDB();
                 dialog.dismiss();
             }
         });
     }
 
-    public void recarregarCarrosDBDB() {
+    public void recarregarCarrosDB() {
         Cursor cursorCarros = meuBancoDeDados.rawQuery("SELECT * FROM carros", null);
         if (cursorCarros.moveToFirst()) {
             listaCarros.clear();
